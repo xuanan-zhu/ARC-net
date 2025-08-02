@@ -6,10 +6,8 @@ This is the official PyTorch implementation of our paper, **"ARC-Net: Enhancing 
 
 ## Installation
 
-This codebase is based on PyTorch and [TorchDrug] ([TorchProtein](https://torchprotein.ai)). 
-It supports training and inference with multiple GPUs.
-The documentation and implementation of our methods can be found in the [docs](https://torchdrug.ai/docs/) of TorchDrug.
-To adapt our model in your setting, you can follow the step-by-step [tutorials](https://torchprotein.ai/tutorials) in TorchProtein.
+This codebase is built upon PyTorch and [TorchDrug] ([TorchProtein](https://torchprotein.ai)). It natively supports both training and inference on multiple GPUs.
+You can install the required dependencies using either Conda or Pip. This code has been tested with Python 3.7/3.8 and PyTorch 1.8.0 (LTS).
 
 [TorchDrug]: https://github.com/DeepGraphLearning/torchdrug
 
@@ -33,16 +31,21 @@ pip install torchdrug
 pip install easydict pyyaml
 ```
 
+## Dataset 
+The Enzyme Commission (EC) and Gene Ontology (GO) datasets are sourced directly from the TorchDrug platform.
+They will be automatically downloaded to your data directory the first time you run a training script. No manual data preparation is required.
+
 
 ## Training and evaluating
 
 We provide scripts for training and evaluating the model on EC and GO tasks
+The following scripts demonstrate how to train and evaluate the ARC-Net model on multiple GPUs using ```torch.distributed```
 
-**Train the model for the EC task:**
+###EC Number Prediction
 ```bash
 sh -c 'CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 main_ec.py'
 ```
-
+###Gene Ontology (GO) Prediction
 **Train the model for the GO task:**
 ```bash
 sh -c 'CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 main_go.py --go BP'
@@ -54,3 +57,4 @@ sh -c 'CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_p
 ## Acknowledgements
 
 * The code implementation and environment setup of this project are partially based on [GearNet](https://github.com/DeepGraphLearning/GearNet). We sincerely thank the original authors for their open-source contributions.
+* This work is powered by the excellent [TorchDrug] ([TorchProtein](https://torchprotein.ai)) library.
