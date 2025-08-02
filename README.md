@@ -1,7 +1,5 @@
 # ARC-Net: Enhancing Protein Function Prediction through an Atomic Environment and Residue Graph Co-learning Networ
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 This is the official PyTorch implementation of our paper, **"ARC-Net: Enhancing Protein Function Prediction through an Atomic Environment and Residue Graph Co-learning Network"**.
 
 ---
@@ -36,9 +34,9 @@ pip install easydict pyyaml
 ```
 
 
-## Training
+## Training and evaluating
 
-We provide scripts for training and evaluating the model on EC and GO tasks. You can view and modify all hyperparameters (e.g., learning rate, batch size, hidden dimensions) via `argparse` within the scripts.
+We provide scripts for training and evaluating the model on EC and GO tasks
 
 **Train the model for the EC task:**
 ```bash
